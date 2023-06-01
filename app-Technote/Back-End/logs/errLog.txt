@@ -1,0 +1,8 @@
+2023-06-01		13:10:42	6902f832-d979-4907-a2a6-d730c71951fd	 Error: Not allowed by CORS	OPTIONS	/	https://www.google.com 
+2023-06-01		13:10:42	42bc94de-e6d8-4d98-ba1f-310d7d26ab15	 Error: Not allowed by CORS	GET	/	https://www.google.com 
+2023-06-01		13:12:32	0008ba16-1330-45ba-8222-59e3292a815b	 Error: Not allowed by CORS	OPTIONS	/	https://www.google.com 
+2023-06-01		13:12:32	57ec119e-cf29-4de5-8394-a2205d91fac0	 Error: Not allowed by CORS	GET	/	https://www.google.com 
+2023-06-01		13:15:05	b4ad9aaf-e955-42c2-b82c-ba5a0d5efd9e	 Error: Not allowed by CORS	OPTIONS	/	https://www.google.com 
+2023-06-01		13:15:05	59b1bcf9-4ad5-4da8-94ae-bc11594c25c8	 Error: Not allowed by CORS	GET	/	https://www.google.com 
+2023-06-01		13:18:53	26b9ab9a-017c-4cf4-8a8c-0257630c924e	 Error: Not allowed by CORS	OPTIONS	/	https://www.google.com 
+2023-06-01		13:18:53	4a5ed6e1-d95e-4cff-8660-397f578f266a	 Error: Not allowed by CORS	GET	/	https://www.google.com 
