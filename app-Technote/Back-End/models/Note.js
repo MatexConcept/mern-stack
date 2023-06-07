@@ -12,6 +12,10 @@ const noteSchema = new mongoose.Schema(
         type:String,
         require: true
     },
+    text:{
+        type: String,
+        require: true
+    },
     completed:{
         type:Boolean,
         default: true
@@ -25,8 +29,8 @@ const noteSchema = new mongoose.Schema(
 )
 
 noteSchema.plugin(AutoIncrement, {
-    inc_fields: 'ticket',
-    id: "ticketNums",
+    inc_field: 'ticket',
+    id: "ticketNum",
     start_seq: 500
 })
 
