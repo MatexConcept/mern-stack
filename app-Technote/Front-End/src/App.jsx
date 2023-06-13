@@ -1,6 +1,8 @@
 import { Routes, Route } from "react-router-dom"
 import {DashLayout, Layout, Public} from './components/index'
 import { Login, Welcome, NoteList, UsersList, EditUser, NewUserForm, EditNote, NewNote } from "./features/index"
+import Prefetch from "./features/auth/Prefetch"
+import PersistLogin from "./features/auth/PersistLogin"
 
 
 
@@ -10,6 +12,9 @@ const App = () => {
         <Route  element={<Layout/>}>
           <Route index element = {<Public/>} />
           <Route path="login" element={<Login/>}/>
+
+          <Route element={<Prefetch/>}>
+          <Route element={<PersistLogin/>}>
 
           <Route path="/dash/" element ={<DashLayout/>}>
             <Route index element={<Welcome/>} />
@@ -28,6 +33,9 @@ const App = () => {
            </Route>
            
           </Route>
+
+        </Route>
+        </Route>
         
         </Route>
       </Routes>
