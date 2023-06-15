@@ -1,7 +1,7 @@
 import {createApi, fetchBaseQuery} from '@reduxjs/toolkit/query/react'
 
 const baseQuery = fetchBaseQuery({
-    baseUrl: 'http://localhost:5555',
+    baseUrl: 'https://DLTtechnote-api.onrender.com',
     prepareHeaders: (headers, {getState}) => {
         const token = getState().auth.token
         

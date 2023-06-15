@@ -4,9 +4,12 @@ import { useNavigate } from "react-router-dom";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faSave } from "@fortawesome/free-solid-svg-icons";
 import { useAddNewNoteMutation } from "./noteApiSlice";
+// import useAuth from "../../hooks/useAuth";
 
 
-const NewNoteForm = (note, users) => {
+const NewNoteForm = (users, note ) => {
+  // const { isManager, isAdmin } = useAuth()
+
   const [addNewNote, { isLoading, isSuccess, isError}] =
     useAddNewNoteMutation();
 
@@ -15,7 +18,7 @@ const NewNoteForm = (note, users) => {
   const [title, setTitle] = useState(note.title);
   const [text, setText] = useState(note.text);
   const [completed, setCompleted] = useState(note.completed);
-  const [userId, setUserId] = useState(note. users);
+  const [userId, setUserId] = useState(note.users);
 
 
   useEffect(() => {
@@ -58,14 +61,13 @@ const NewNoteForm = (note, users) => {
 
   
 
-
-  const options = Array.isArray(users) ? (
-    users.map((user) => (
+  const options = users.map((user) => {
+    return (
       <option key={user.id} value={user.id}>
         {user.username}
       </option>
-    ))
-  ) : null;
+    );
+  });
 
   const errClass = isError ? "errmsg" : "offscreen";
   const validTitleClass = !title ? "form__input--incomplete" : "";

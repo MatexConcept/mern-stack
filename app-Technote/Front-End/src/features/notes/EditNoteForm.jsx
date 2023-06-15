@@ -3,8 +3,12 @@ import { useUpdateNoteMutation, useDeleteNoteMutation } from "./noteApiSlice";
 import { useNavigate } from "react-router-dom";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faSave, faTrashCan } from "@fortawesome/free-solid-svg-icons";
+import useAuth from "../../hooks/useAuth";
 
-const EditNoteForm = ({ note, users }) => {
+const EditNoteForm = ({ users, note }) => {
+  
+  const { isManager, isAdmin } = useAuth()
+
   const [updateNote, { isLoading, isSuccess, isError, error }] =
     useUpdateNoteMutation();
 
@@ -14,6 +18,7 @@ const EditNoteForm = ({ note, users }) => {
   ] = useDeleteNoteMutation();
 
   const navigate = useNavigate();
+
 
   const [title, setTitle] = useState(note.title);
   const [text, setText] = useState(note.text);
@@ -29,6 +34,7 @@ const EditNoteForm = ({ note, users }) => {
     }
   }, [isSuccess, isDelSuccess, navigate]);
 
+  // event handlers
   const onTitleChanged = (e) => setTitle(e.target.value);
   const onTextChanged = (e) => setText(e.target.value);
   const onCompletedChanged = (e) => setCompleted((prev) => !prev);
@@ -66,7 +72,6 @@ const EditNoteForm = ({ note, users }) => {
   const options = users.map((user) => {
     return (
       <option key={user.id} value={user.id}>
-        {" "}
         {user.username}
       </option>
     );
@@ -77,6 +82,19 @@ const EditNoteForm = ({ note, users }) => {
   const validTextClass = !text ? "form__input--incomplete" : "";
 
   const errContent = (error?.data?.message || delerror?.data?.message) ?? "";
+
+  let deleteButton = null
+    if (isManager || isAdmin) {
+        deleteButton = (
+            <button
+                className="icon-button"
+                title="Delete"
+                onClick={onDeleteNoteClicked}
+            >
+                <FontAwesomeIcon icon={faTrashCan} />
+            </button>
+        )
+    }
 
   return (
     <>
@@ -94,13 +112,14 @@ const EditNoteForm = ({ note, users }) => {
             >
               <FontAwesomeIcon icon={faSave} />
             </button>
-            <button
+            {/* <button
               className="icon-button"
               title="Delete"
               onClick={onDeleteNoteClicked}
             >
               <FontAwesomeIcon icon={faTrashCan} />
-            </button>
+            </button> */}
+            {deleteButton}
           </div>
         </div>
         <label className="form__label" htmlFor="note-title">

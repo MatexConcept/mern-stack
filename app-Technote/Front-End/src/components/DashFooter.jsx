@@ -1,35 +1,37 @@
-import { useNavigate, useLocation } from "react-router-dom"
-import {FontAwesomeIcon} from '@fortawesome/react-fontawesome'
-import {faHome} from '@fortawesome/free-solid-svg-icons'
+import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
+import { faHome } from "@fortawesome/free-solid-svg-icons";
+import { useNavigate, useLocation } from "react-router-dom";
+import useAuth from "../hooks/useAuth";
 
 const DashFooter = () => {
-    const navigate = useNavigate();
-    const {pathname} = useLocation();
 
+  const {username, status} =useAuth();
 
-    const onGoHomeClicked = () => navigate('/dash')
+  const navigate = useNavigate();
+  const { pathname } = useLocation();
 
-    let goHomeBtn = null;
+  const onGoHomeClicked = () => navigate("/dash");
 
-   if(pathname !== "/dash") {
-     goHomeBtn = (
-        <button className="dash-footer__button icon-button" 
-        onClick={onGoHomeClicked}
+  let goHomeButton = null;
+  if (pathname !== "/dash") {
+    goHomeButton = (
+      <button
+        className="dash-footer__button icon-button"
         title="Home"
-        >
-       <FontAwesomeIcon icon = {faHome}/>
-        </button>
-           
-    )
-   }
-    
-  return (
-    <footer className='dash-footer'>
-         {goHomeBtn}
-        <p>Current User:</p>
-        <p>Status: </p>
-    </footer>
-  )
-}
+        onClick={onGoHomeClicked}
+      >
+        <FontAwesomeIcon icon={faHome} />
+      </button>
+    );
+  }
 
-export default DashFooter
+  return (
+    <footer className="dash-footer">
+      {goHomeButton}
+      <p>Current user: {username}</p>
+      <p>Status:{status}</p>
+    </footer>
+  );
+};
+
+export default DashFooter;

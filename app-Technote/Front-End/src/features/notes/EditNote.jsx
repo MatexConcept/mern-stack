@@ -10,13 +10,10 @@ const EditNote = () => {
   const note = useSelector((state) => selectNoteById(state, id));
   const users = useSelector(selectAllUsers);
 
-  const content =
-    note && users ? (
-      <EditNoteForm note={note} users={users} />
-    ) : (
-      <p>Loading...</p>
-    );
-
-  return content;
+  return note && users ? (
+    <EditNoteForm note={note} users={users} />
+  ) : (
+    <p>Loading...</p>
+  );
 };
 export default EditNote;

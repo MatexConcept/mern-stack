@@ -13,7 +13,7 @@ const cookieParser = require('cookie-parser')
 const ConnectDb = require('./config/dbConnect')
 
 
-const PORT = process.env.PORT || 5555
+const PORT = process.env.PORT || 9999
 
 console.log(process.env.NODE_ENV)
 
